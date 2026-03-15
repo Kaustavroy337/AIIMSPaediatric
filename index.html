@@ -351,8 +351,11 @@
           .order('created_at', { ascending: false })
           .limit(100);
 
+        if (!data) return;
+
         const map = {};
         data.forEach(r => {
+          if (r.doctor_name) r.doctor_name = r.doctor_name.trim();
           if (!map[r.doctor_name]) map[r.doctor_name] = r;
         });
 
