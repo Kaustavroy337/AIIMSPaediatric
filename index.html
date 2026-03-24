@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Doctor Token Display</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Roboto:wght@700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
 
   <style>
-    html,
-    body {
+    html, body {
       height: 100%;
       margin: 0;
       background: #AAB0B9;
@@ -44,6 +41,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .room {
@@ -68,75 +66,20 @@
     }
 
     @keyframes flickerAnimation {
-
-      0%,
-      20%,
-      40%,
-      60%,
-      80%,
-      100% {
-        opacity: 1;
-      }
-
-      10%,
-      30%,
-      50%,
-      70%,
-      90% {
-        opacity: 0;
-      }
+      0%,20%,40%,60%,80%,100% { opacity: 1; }
+      10%,30%,50%,70%,90% { opacity: 0; }
     }
 
     /* Tile positions */
-    #tile1 {
-      left: 0;
-      top: 0;
-      width: 480px;
-      height: 270px;
-    }
+    #tile1 { left: 0; top: 0; width: 480px; height: 270px; }
+    #tile2 { left: 0; top: 270px; width: 480px; height: 270px; }
+    #tile3 { left: 0; top: 540px; width: 480px; height: 270px; }
+    #tile4 { left: 0; top: 810px; width: 480px; height: 270px; }
+    #tile5 { left: 480px; top: 810px; width: 480px; height: 270px; }
+    #tile6 { left: 960px; top: 810px; width: 480px; height: 270px; }
+    #tile7 { left: 1440px; top: 810px; width: 480px; height: 270px; }
 
-    #tile2 {
-      left: 0;
-      top: 270px;
-      width: 480px;
-      height: 270px;
-    }
-
-    #tile3 {
-      left: 0;
-      top: 540px;
-      width: 480px;
-      height: 270px;
-    }
-
-    #tile4 {
-      left: 0;
-      top: 810px;
-      width: 480px;
-      height: 270px;
-    }
-
-    #tile5 {
-      left: 480px;
-      top: 810px;
-      width: 480px;
-      height: 270px;
-    }
-
-    #tile6 {
-      left: 960px;
-      top: 810px;
-      width: 480px;
-      height: 270px;
-    }
-
-    #tile7 {
-      left: 1440px;
-      top: 810px;
-      width: 480px;
-      height: 270px;
-    }
-
+    /* Video area */
     #videoContainer {
       position: absolute;
       left: 480px;
@@ -155,53 +98,53 @@
 </head>
 
 <body>
-  <div id="stage-wrapper">
-    <div id="stage">
+<div id="stage-wrapper">
+  <div id="stage">
 
-      <div id="videoContainer">
-        <video autoplay loop muted playsinline>
-          <source src="assets/AIIMSDermat 3 Language.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div id="tile1" class="tile"></div>
-      <div id="tile2" class="tile"></div>
-      <div id="tile3" class="tile"></div>
-      <div id="tile4" class="tile"></div>
-      <div id="tile5" class="tile"></div>
-      <div id="tile6" class="tile"></div>
-      <div id="tile7" class="tile"></div>
-
+    <div id="videoContainer">
+      <video autoplay loop muted playsinline>
+        <source src="assets/AIIMSDermat 3 Language.mp4" type="video/mp4">
+      </video>
     </div>
+
+    <div id="tile1" class="tile"></div>
+    <div id="tile2" class="tile"></div>
+    <div id="tile3" class="tile"></div>
+    <div id="tile4" class="tile"></div>
+    <div id="tile5" class="tile"></div>
+    <div id="tile6" class="tile"></div>
+    <div id="tile7" class="tile"></div>
+
   </div>
+</div>
 
-  <script>
-    /* =========================
-       STAGE SCALING
-    ========================= */
-    (function () {
-      const stage = document.getElementById('stage');
-      function scale() {
-        const s = Math.max(
-          window.innerWidth / 1920,
-          window.innerHeight / 1080
-        );
-        stage.style.transform =
-          `translate(-50%, -50%) scale(${s})`;
-      }
-      window.addEventListener('resize', scale);
-      scale();
-    })();
+<script>
+/* ===============================
+   STAGE SCALING
+================================ */
+(function () {
+  const stage = document.getElementById('stage');
+  function scale() {
+    const s = Math.max(
+      window.innerWidth / 1920,
+      window.innerHeight / 1080
+    );
+    stage.style.transform =
+      `translate(-50%, -50%) scale(${s})`;
+  }
+  window.addEventListener('resize', scale);
+  scale();
+})();
 
-    /* =========================
-       MAIN LOGIC
-    ========================= */
-    document.addEventListener('DOMContentLoaded', async () => {
+/* ===============================
+   MAIN LOGIC
+================================ */
+document.addEventListener('DOMContentLoaded', async () => {
 
-      const supabaseClient = supabase.createClient(
-        'https://tfzkfcnijsugsgzeyalj.supabase.co',
-        'sb_publishable_7v0LE23wG7XIfZr2h_qGlw_ye8TgRaS'
-      );
+  const supabaseClient = supabase.createClient(
+    'https://kqpuzhuqymlzmmuuetvc.supabase.co',
+    'sb_publishable_gi3ZbI9Kz89-PHM8A4dkLA_SB4CxlzB'
+  );
 
       const tileDoctors = [
         [
@@ -227,158 +170,183 @@
         ]
       ];
 
-      const tileState = tileDoctors.map(d => ({
-        doctors: d,
-        currentIndex: 0,
-        isHindi: true,
-        langTimer: null,
-        doctorTimer: null
-      }));
+  const tileState = tileDoctors.map(d => ({
+    doctors: d,
+    currentIndex: 0,
+    isHindi: true,
+    langTimer: null,
+    doctorTimer: null
+  }));
 
-      const latestTokens = {};
-      const lastTokenNumbers = {};
+  const latestTokens = {};
+  const lastTokenNumbers = {};
 
-      const tileColors = ["#E8B069", "#69AEE8"];
-      for (let i = 1; i <= 7; i++) {
-        const el = document.getElementById(`tile${i}`);
-        el.style.background = tileColors[(i - 1) % 2];
-        el.innerHTML = `
+  const tileColors = ["#E8B069", "#69AEE8"];
+  for (let i = 1; i <= 7; i++) {
+    const el = document.getElementById(`tile${i}`);
+    el.style.background = tileColors[(i - 1) % 2];
+    el.innerHTML = `
       <div class="room" id="room-${i}"></div>
       <div class="token-label" id="token-label-${i}"></div>
       <div class="token-number" id="token-${i}"></div>
     `;
-      }
+  }
 
-      function toHindi(n) {
-        const d = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
-        return String(n).split('').map(x => d[x] || x).join('');
-      }
+  function toHindi(n) {
+    const d = ['०','१','२','३','४','५','६','७','८','९'];
+    return String(n).split('').map(x => d[x] || x).join('');
+  }
 
-      function getAvailableDoctors(tileIdx) {
-        return tileState[tileIdx].doctors.filter(d => latestTokens[d]);
-      }
+  function renderTile(i) {
+    const s = tileState[i];
+    const doc = s.doctors[s.currentIndex];
+    const data = latestTokens[doc];
 
-      function renderTile(i) {
-        const state = tileState[i];
-        const doctor = state.doctors[state.currentIndex];
-        const data = latestTokens[doctor];
+    const room = document.getElementById(`room-${i+1}`);
+    const label = document.getElementById(`token-label-${i+1}`);
+    const token = document.getElementById(`token-${i+1}`);
 
-        const room = document.getElementById(`room-${i + 1}`);
-        const label = document.getElementById(`token-label-${i + 1}`);
-        const token = document.getElementById(`token-${i + 1}`);
+    if (!data) {
+      room.textContent = label.textContent = token.textContent = '';
+      return;
+    }
 
-        if (!data) {
-          room.textContent = label.textContent = token.textContent = '';
-          return;
+    let displayTokens = [data.token_number, ...(data.follow_ups || [])];
+    
+    if (displayTokens.length > 2) {
+      token.style.fontSize = '80px';
+    } else if (displayTokens.length > 1) {
+      token.style.fontSize = '100px';
+    } else {
+      token.style.fontSize = '150px';
+    }
+
+    if (s.isHindi) {
+      room.textContent = `रूम : ${toHindi(data.room_number)}`;
+      label.textContent = "टोकन";
+      token.textContent = displayTokens.map(t => toHindi(t)).join(', ');
+    } else {
+      room.textContent = `ROOM : ${data.room_number}`;
+      label.textContent = "TOKEN";
+      token.textContent = displayTokens.join(', ');
+    }
+  }
+
+  function startLang(i) {
+    clearInterval(tileState[i].langTimer);
+    tileState[i].isHindi = true;
+    renderTile(i);
+    tileState[i].langTimer = setInterval(() => {
+      tileState[i].isHindi = !tileState[i].isHindi;
+      renderTile(i);
+    }, 5000);
+  }
+
+  function startDoctor(i) {
+    if (tileState[i].doctors.length === 1) return;
+    clearInterval(tileState[i].doctorTimer);
+    tileState[i].doctorTimer = setInterval(() => {
+      const state = tileState[i];
+      const numDoctors = state.doctors.length;
+      let nextIndex = (state.currentIndex + 1) % numDoctors;
+      let foundActive = false;
+      
+      // Try to find the next doctor that has data
+      for (let j = 0; j < numDoctors; j++) {
+        const doc = state.doctors[nextIndex];
+        if (latestTokens[doc]) {
+          state.currentIndex = nextIndex;
+          foundActive = true;
+          break;
         }
+        nextIndex = (nextIndex + 1) % numDoctors;
+      }
+      
+      startLang(i);
+    }, 10000);
+  }
 
-        if (state.isHindi) {
-          room.textContent = `रूम : ${toHindi(data.room_number)}`;
-          label.textContent = "टोकन";
-          token.textContent = toHindi(data.token_number);
-        } else {
-          room.textContent = `ROOM : ${data.room_number}`;
-          label.textContent = "TOKEN";
-          token.textContent = data.token_number;
+  function handleNewToken(doctor, token) {
+    tileState.forEach((t, i) => {
+      if (t.doctors.includes(doctor)) {
+        if (lastTokenNumbers[doctor] &&
+            lastTokenNumbers[doctor] !== token) {
+          const el = document.getElementById(`token-${i+1}`);
+          el.classList.remove('flicker');
+          void el.offsetWidth;
+          el.classList.add('flicker');
         }
-      }
-
-      function startLang(i) {
-        clearInterval(tileState[i].langTimer);
-        tileState[i].isHindi = true;
-        renderTile(i);
-        tileState[i].langTimer = setInterval(() => {
-          tileState[i].isHindi = !tileState[i].isHindi;
-          renderTile(i);
-        }, 5000);
-      }
-
-      function startDoctor(i) {
-        const state = tileState[i];
-        clearInterval(state.doctorTimer);
-
-        function rotate() {
-          const available = getAvailableDoctors(i);
-
-          if (available.length === 0) return;
-          if (available.length === 1) {
-            state.currentIndex = state.doctors.indexOf(available[0]);
-            renderTile(i);
-            return;
-          }
-
-          const current = state.doctors[state.currentIndex];
-          const idx = available.includes(current)
-            ? available.indexOf(current)
-            : -1;
-
-          const next =
-            idx === -1 ? available[0] : available[(idx + 1) % available.length];
-
-          state.currentIndex = state.doctors.indexOf(next);
-          startLang(i);
-          renderTile(i);
-        }
-
-        rotate();
-        state.doctorTimer = setInterval(rotate, 10000);
-      }
-
-      function handleNewToken(doctor, token) {
-        tileState.forEach((t, i) => {
-          if (t.doctors.includes(doctor)) {
-
-            if (lastTokenNumbers[doctor] &&
-              lastTokenNumbers[doctor] !== token) {
-              const el = document.getElementById(`token-${i + 1}`);
-              el.classList.remove('flicker');
-              void el.offsetWidth;
-              el.classList.add('flicker');
-            }
-
-            lastTokenNumbers[doctor] = token;
-            t.currentIndex = t.doctors.indexOf(doctor);
-            startLang(i);
-            renderTile(i);
-          }
-        });
-      }
-
-      async function fetchLatest() {
-        const { data } = await supabaseClient
-          .from('running_token_details')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(100);
-
-        if (!data) return;
-
-        const map = {};
-        data.forEach(r => {
-          if (r.doctor_name) r.doctor_name = r.doctor_name.trim();
-          if (!map[r.doctor_name]) map[r.doctor_name] = r;
-        });
-
-        Object.values(map).forEach(r => {
-          if (!latestTokens[r.doctor_name] ||
-            latestTokens[r.doctor_name].token_number !== r.token_number) {
-            latestTokens[r.doctor_name] = r;
-            handleNewToken(r.doctor_name, r.token_number);
-          }
-        });
-      }
-
-      await fetchLatest();
-      tileState.forEach((_, i) => {
+        lastTokenNumbers[doctor] = token;
+        t.currentIndex = t.doctors.indexOf(doctor);
         startLang(i);
-        startDoctor(i);
         renderTile(i);
-      });
-
-      setInterval(fetchLatest, 3000);
-
+      }
     });
-  </script>
-</body>
+  }
 
+  async function fetchLatest() {
+    const { data: runningData } = await supabaseClient
+      .from('running_token_details')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(30);
+
+    const map = {};
+    if (runningData) {
+      runningData.forEach(r => {
+        if (!map[r.doctor_name]) {
+          map[r.doctor_name] = { ...r, follow_ups: [] };
+        }
+      });
+    }
+
+    const activeDoctors = Object.keys(map);
+    if (activeDoctors.length > 0) {
+      const { data: followupData } = await supabaseClient
+        .from('token_details')
+        .select('doctor_name, token_number')
+        .in('doctor_name', activeDoctors)
+        .ilike('status', '%follow%up%')
+        .order('created_at', { ascending: true });
+
+      if (followupData) {
+        const followUpsMap = {};
+        followupData.forEach(r => {
+          if (!followUpsMap[r.doctor_name]) {
+            followUpsMap[r.doctor_name] = [];
+          }
+          if (followUpsMap[r.doctor_name].length < 2) {
+            followUpsMap[r.doctor_name].push(r.token_number);
+          }
+        });
+
+        activeDoctors.forEach(doc => {
+          map[doc].follow_ups = followUpsMap[doc] || [];
+        });
+      }
+    }
+
+    Object.values(map).forEach(r => {
+      const combinedToken = [r.token_number, ...r.follow_ups].join(', ');
+      
+      if (!latestTokens[r.doctor_name] ||
+          latestTokens[r.doctor_name].combinedToken !== combinedToken) {
+        r.combinedToken = combinedToken;
+        latestTokens[r.doctor_name] = r;
+        handleNewToken(r.doctor_name, r.combinedToken);
+      }
+    });
+  }
+
+  await fetchLatest();
+  tileState.forEach((_, i) => {
+    startLang(i);
+    startDoctor(i);
+    renderTile(i);
+  });
+
+  setInterval(fetchLatest, 3000);
+});
+</script>
+</body>
 </html>
